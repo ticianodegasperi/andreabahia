@@ -322,51 +322,83 @@ function toggleFAQ(item, faqItems) {
 
 // Função para inicializar o menu mobile
 function initMobileMenu() {
-    const mobileToggle = document.getElementById('mobile-menu-toggle');
-    const headerNav = document.getElementById('header-nav');
-    const navLinks = document.querySelectorAll('.nav-menu a');
+    console.log('🚀 Inicializando menu mobile...');
     
-    if (!mobileToggle || !headerNav) {
-        return;
-    }
-    
-    // Toggle do menu mobile
-    mobileToggle.addEventListener('click', () => {
-        mobileToggle.classList.toggle('active');
-        headerNav.classList.toggle('active');
+    // Aguardar um pouco para garantir que o DOM está carregado
+    setTimeout(() => {
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const headerNav = document.getElementById('header-nav');
+        const navLinks = document.querySelectorAll('.nav-menu a');
         
-        // Previne scroll do body quando menu está aberto
-        if (headerNav.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    });
-    
-    // Fechar menu ao clicar em um link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            document.body.style.overflow = 'auto';
+        console.log('📱 Elementos encontrados:', {
+            mobileToggle: mobileToggle ? '✅' : '❌',
+            headerNav: headerNav ? '✅' : '❌',
+            navLinks: navLinks.length
         });
-    });
-    
-    // Fechar menu ao clicar fora dele
-    headerNav.addEventListener('click', (e) => {
-        if (e.target === headerNav) {
-            mobileToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            document.body.style.overflow = 'auto';
+        
+        if (!mobileToggle || !headerNav) {
+            console.log('❌ Elementos não encontrados, saindo...');
+            return;
         }
-    });
-    
-    // Fechar menu com tecla ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && headerNav.classList.contains('active')) {
-            mobileToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            document.body.style.overflow = 'auto';
+        
+        // Função para abrir/fechar menu
+        function toggleMenu() {
+            console.log('🍔 Toggle do menu chamado!');
+            const isActive = headerNav.classList.contains('active');
+            
+            if (isActive) {
+                // Fechar menu
+                mobileToggle.classList.remove('active');
+                headerNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                console.log('🔓 Menu fechado');
+            } else {
+                // Abrir menu
+                mobileToggle.classList.add('active');
+                headerNav.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.log('🔒 Menu aberto');
+            }
         }
-    });
+        
+        // Event listener para o botão hambúrguer
+        mobileToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🍔 Clique no botão hambúrguer detectado!');
+            toggleMenu();
+        });
+        
+        // Fechar menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                console.log('🔗 Link clicado, fechando menu');
+                mobileToggle.classList.remove('active');
+                headerNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Fechar menu ao clicar fora dele
+        headerNav.addEventListener('click', (e) => {
+            if (e.target === headerNav) {
+                console.log('👆 Clique fora do menu, fechando');
+                mobileToggle.classList.remove('active');
+                headerNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Fechar menu com tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && headerNav.classList.contains('active')) {
+                console.log('⌨️ Tecla ESC pressionada, fechando menu');
+                mobileToggle.classList.remove('active');
+                headerNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        console.log('✅ Menu mobile inicializado com sucesso!');
+    }, 100);
 }

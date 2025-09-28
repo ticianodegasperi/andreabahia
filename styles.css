@@ -138,7 +138,8 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1001;
+    z-index: 10000;
+    position: relative;
 }
 
 .hamburger-line {
@@ -1353,7 +1354,9 @@ body {
         
         /* Mostrar botão hambúrguer em mobile */
         .mobile-menu-toggle {
-            display: flex;
+            display: flex !important;
+            position: relative;
+            z-index: 10000;
         }
         
         /* Ocultar menu de navegação em mobile */
@@ -1369,11 +1372,11 @@ body {
             align-items: center;
             justify-content: center;
             transition: left 0.3s ease;
-            z-index: 1000;
+            z-index: 9999;
         }
         
         .header-nav.active {
-            left: 0;
+            left: 0 !important;
         }
         
         .nav-menu {
