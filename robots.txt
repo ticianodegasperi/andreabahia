@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Permitir acesso a todos os recursos
+Allow: /images/
+Allow: /styles.css
+Allow: /script.js
+
+# Sitemap
+Sitemap: https://www.clinicaandreabahia.com/sitemap.xml
+
+# Crawl-delay (opcional - 1 segundo entre requisições)
+Crawl-delay: 1
+
+# Bloquear arquivos desnecessários (se existirem)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.log$
+Disallow: /*.tmp$

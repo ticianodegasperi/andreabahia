@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+  
+  <!-- Fundo claro -->
+  <rect width="400" height="300" fill="#F5F5DC"/>
+  
+  <!-- Blocos de madeira empilhados -->
+  <!-- Bloco 1 -->
+  <rect x="80" y="100" width="50" height="40" fill="#DEB887" stroke="#CD853F" stroke-width="2"/>
+  <line x1="80" y1="120" x2="130" y2="120" stroke="#CD853F" stroke-width="1"/>
+  <line x1="105" y1="100" x2="105" y2="140" stroke="#CD853F" stroke-width="1"/>
+  
+  <!-- Bloco 2 -->
+  <rect x="130" y="80" width="45" height="35" fill="#DEB887" stroke="#CD853F" stroke-width="2"/>
+  <line x1="130" y1="97.5" x2="175" y2="97.5" stroke="#CD853F" stroke-width="1"/>
+  <line x1="152.5" y1="80" x2="152.5" y2="115" stroke="#CD853F" stroke-width="1"/>
+  
+  <!-- Bloco 3 -->
+  <rect x="175" y="60" width="40" height="30" fill="#DEB887" stroke="#CD853F" stroke-width="2"/>
+  <line x1="175" y1="75" x2="215" y2="75" stroke="#CD853F" stroke-width="1"/>
+  <line x1="195" y1="60" x2="195" y2="90" stroke="#CD853F" stroke-width="1"/>
+  
+  <!-- Bloco 4 (inclinado) -->
+  <rect x="215" y="70" width="35" height="25" fill="#DEB887" stroke="#CD853F" stroke-width="2" transform="rotate(5 232.5 82.5)"/>
+  
+  <!-- Bloco 5 -->
+  <rect x="250" y="90" width="30" height="20" fill="#DEB887" stroke="#CD853F" stroke-width="2"/>
+  <line x1="250" y1="100" x2="280" y2="100" stroke="#CD853F" stroke-width="1"/>
+  <line x1="265" y1="90" x2="265" y2="110" stroke="#CD853F" stroke-width="1"/>
+  
+  <!-- Olhos da criança espiando -->
+  <circle cx="200" cy="120" r="4" fill="#8B4513"/>
+  <circle cx="220" cy="120" r="4" fill="#8B4513"/>
+  
+  <!-- Brilho nos olhos -->
+  <circle cx="201" cy="118" r="1.5" fill="#FFFFFF"/>
+  <circle cx="221" cy="118" r="1.5" fill="#FFFFFF"/>
+  
+  <!-- Nariz -->
+  <circle cx="210" cy="125" r="2" fill="#DEB887"/>
+  
+  <!-- Mão da criança -->
+  <ellipse cx="320" cy="200" rx="15" ry="10" fill="#FFE4B5" filter="url(#blur)"/>
+  
+  <!-- Mesa de madeira -->
+  <rect x="20" y="220" width="360" height="30" fill="#DEB887" stroke="#CD853F" stroke-width="3"/>
+  
+  <!-- Veios da mesa -->
+  <line x1="30" y1="230" x2="370" y2="230" stroke="#CD853F" stroke-width="1"/>
+  <line x1="30" y1="235" x2="370" y2="235" stroke="#CD853F" stroke-width="1"/>
+  <line x1="30" y1="240" x2="370" y2="240" stroke="#CD853F" stroke-width="1"/>
+  
+  <!-- Ambiente interno desfocado -->
+  <rect x="0" y="250" width="400" height="50" fill="rgba(245, 245, 220, 0.3)" filter="url(#blur)"/>
+</svg>
