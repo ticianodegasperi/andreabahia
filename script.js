@@ -322,28 +322,18 @@ function toggleFAQ(item, faqItems) {
 
 // Função para inicializar o menu mobile
 function initMobileMenu() {
-    console.log('🚀 Inicializando menu mobile...');
-    
     // Aguardar um pouco para garantir que o DOM está carregado
     setTimeout(() => {
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const headerNav = document.getElementById('header-nav');
         const navLinks = document.querySelectorAll('.nav-menu a');
         
-        console.log('📱 Elementos encontrados:', {
-            mobileToggle: mobileToggle ? '✅' : '❌',
-            headerNav: headerNav ? '✅' : '❌',
-            navLinks: navLinks.length
-        });
-        
         if (!mobileToggle || !headerNav) {
-            console.log('❌ Elementos não encontrados, saindo...');
             return;
         }
         
         // Função para abrir/fechar menu
         function toggleMenu() {
-            console.log('🍔 Toggle do menu chamado!');
             const isActive = headerNav.classList.contains('active');
             
             if (isActive) {
@@ -351,13 +341,11 @@ function initMobileMenu() {
                 mobileToggle.classList.remove('active');
                 headerNav.classList.remove('active');
                 document.body.style.overflow = 'auto';
-                console.log('🔓 Menu fechado');
             } else {
                 // Abrir menu
                 mobileToggle.classList.add('active');
                 headerNav.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                console.log('🔒 Menu aberto');
             }
         }
         
@@ -365,14 +353,12 @@ function initMobileMenu() {
         mobileToggle.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.log('🍔 Clique no botão hambúrguer detectado!');
             toggleMenu();
         });
         
         // Fechar menu ao clicar em um link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                console.log('🔗 Link clicado, fechando menu');
                 mobileToggle.classList.remove('active');
                 headerNav.classList.remove('active');
                 document.body.style.overflow = 'auto';
@@ -382,7 +368,6 @@ function initMobileMenu() {
         // Fechar menu ao clicar fora dele
         headerNav.addEventListener('click', (e) => {
             if (e.target === headerNav) {
-                console.log('👆 Clique fora do menu, fechando');
                 mobileToggle.classList.remove('active');
                 headerNav.classList.remove('active');
                 document.body.style.overflow = 'auto';
@@ -392,13 +377,10 @@ function initMobileMenu() {
         // Fechar menu com tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && headerNav.classList.contains('active')) {
-                console.log('⌨️ Tecla ESC pressionada, fechando menu');
                 mobileToggle.classList.remove('active');
                 headerNav.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
         });
-        
-        console.log('✅ Menu mobile inicializado com sucesso!');
     }, 100);
 }
