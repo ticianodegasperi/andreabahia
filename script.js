@@ -118,6 +118,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializa o FAQ
     initFAQ();
+    
+    // Inicializa o menu mobile
+    initMobileMenu();
 });
 
 // ========================================
@@ -311,4 +314,59 @@ function toggleFAQ(item, faqItems) {
         question.setAttribute('aria-expanded', 'true');
         answer.setAttribute('aria-hidden', 'false');
     }
+}
+
+// ========================================
+// MENU MOBILE
+// ========================================
+
+// Função para inicializar o menu mobile
+function initMobileMenu() {
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const headerNav = document.getElementById('header-nav');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    if (!mobileToggle || !headerNav) {
+        return;
+    }
+    
+    // Toggle do menu mobile
+    mobileToggle.addEventListener('click', () => {
+        mobileToggle.classList.toggle('active');
+        headerNav.classList.toggle('active');
+        
+        // Previne scroll do body quando menu está aberto
+        if (headerNav.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Fechar menu ao clicar em um link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileToggle.classList.remove('active');
+            headerNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+    
+    // Fechar menu ao clicar fora dele
+    headerNav.addEventListener('click', (e) => {
+        if (e.target === headerNav) {
+            mobileToggle.classList.remove('active');
+            headerNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Fechar menu com tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && headerNav.classList.contains('active')) {
+            mobileToggle.classList.remove('active');
+            headerNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
 }
