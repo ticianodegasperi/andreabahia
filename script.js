@@ -121,6 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializa o menu mobile
     initMobileMenu();
+    
+    // Inicializar scroll horizontal dos serviços
+    initServicesScroll();
 });
 
 // ========================================
@@ -314,6 +317,50 @@ function toggleFAQ(item, faqItems) {
         question.setAttribute('aria-expanded', 'true');
         answer.setAttribute('aria-hidden', 'false');
     }
+}
+
+// ========================================
+// SCROLL HORIZONTAL DOS SERVIÇOS
+// ========================================
+
+// Função para inicializar o scroll horizontal dos serviços
+function initServicesScroll() {
+    const servicesGrid = document.querySelector('.services-grid');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    if (!servicesGrid || !scrollIndicator) {
+        return;
+    }
+    
+    // Ocultar indicador após o primeiro scroll
+    let hasScrolled = false;
+    
+    servicesGrid.addEventListener('scroll', () => {
+        if (!hasScrolled) {
+            hasScrolled = true;
+            scrollIndicator.style.opacity = '0';
+            setTimeout(() => {
+                scrollIndicator.style.display = 'none';
+            }, 500);
+        }
+    });
+    
+    // Adicionar suporte a touch/swipe
+    let isScrolling = false;
+    
+    servicesGrid.addEventListener('touchstart', () => {
+        isScrolling = true;
+    });
+    
+    servicesGrid.addEventListener('touchend', () => {
+        isScrolling = false;
+    });
+    
+    // Smooth scroll com wheel
+    servicesGrid.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        servicesGrid.scrollLeft += e.deltaY;
+    });
 }
 
 // ========================================
